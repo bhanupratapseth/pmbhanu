@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bhanu Pratap Seth | Senior Product Manager</title>
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy2: #112240;
+    --gold: #c9a84c;
+    --gold2: #e8c97e;
+    --text: #ccd6f6;
+    --muted: #8892b0;
+    --white: #e6f1ff;
+    --card: #112240;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--navy);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;}
+
+  /* NAV */
+  nav{position:fixed;top:0;width:100%;background:rgba(10,22,40,0.92);backdrop-filter:blur(10px);z-index:100;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(201,168,76,0.15);}
+  .nav-logo{color:var(--gold);font-weight:700;font-size:1.1rem;letter-spacing:1px;}
+  .nav-links{display:flex;gap:1.8rem;list-style:none;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:0.85rem;letter-spacing:1px;text-transform:uppercase;transition:color 0.3s;}
+  .nav-links a:hover{color:var(--gold);}
+
+  /* HERO */
+  #hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 3rem;position:relative;overflow:hidden;}
+  #hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%, rgba(201,168,76,0.08) 0%, transparent 70%);}
+  .hero-inner{max-width:750px;position:relative;}
+  .hero-tag{color:var(--gold);font-size:0.9rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:1rem;opacity:0;animation:fadeUp 0.8s 0.2s forwards;}
+  .hero-name{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;color:var(--white);line-height:1.1;margin-bottom:0.5rem;opacity:0;animation:fadeUp 0.8s 0.4s forwards;}
+  .hero-name span{color:var(--gold);}
+  .hero-title{font-size:clamp(1rem,2.5vw,1.4rem);color:var(--muted);margin-bottom:2rem;opacity:0;animation:fadeUp 0.8s 0.6s forwards;}
+  .hero-desc{color:var(--muted);max-width:560px;margin:0 auto 2.5rem;font-size:1rem;opacity:0;animation:fadeUp 0.8s 0.8s forwards;}
+  .hero-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp 0.8s 1s forwards;}
+  .btn{padding:0.7rem 1.6rem;border-radius:4px;text-decoration:none;font-size:0.9rem;font-weight:600;transition:all 0.3s;letter-spacing:0.5px;}
+  .btn-gold{background:var(--gold);color:var(--navy);border:2px solid var(--gold);}
+  .btn-gold:hover{background:transparent;color:var(--gold);}
+  .btn-outline{background:transparent;color:var(--gold);border:2px solid var(--gold);}
+  .btn-outline:hover{background:var(--gold);color:var(--navy);}
+  .scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);color:var(--muted);font-size:0.75rem;letter-spacing:2px;text-transform:uppercase;animation:bounce 2s infinite;}
+
+  /* SECTIONS */
+  section{padding:6rem 2rem;}
+  .container{max-width:960px;margin:0 auto;}
+  .section-label{color:var(--gold);font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:0.5rem;}
+  .section-title{font-size:clamp(1.6rem,3vw,2.2rem);color:var(--white);font-weight:700;margin-bottom:1rem;}
+  .section-line{width:60px;height:3px;background:linear-gradient(90deg,var(--gold),transparent);margin-bottom:3rem;}
+
+  /* SUMMARY */
+  #summary{background:var(--navy2);}
+  .summary-text{font-size:1.05rem;color:var(--muted);max-width:750px;line-height:1.9;}
+  .summary-text strong{color:var(--gold2);}
+
+  /* EXPERIENCE */
+  .timeline{position:relative;padding-left:2rem;}
+  .timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--gold),transparent);}
+  .tl-item{position:relative;margin-bottom:3rem;}
+  .tl-dot{position:absolute;left:-2.37rem;top:0.3rem;width:14px;height:14px;border-radius:50%;background:var(--gold);border:2px solid var(--navy);box-shadow:0 0 10px rgba(201,168,76,0.5);}
+  .tl-company{color:var(--gold);font-weight:700;font-size:1rem;letter-spacing:0.5px;}
+  .tl-role{color:var(--white);font-size:1.1rem;font-weight:600;margin-bottom:0.2rem;}
+  .tl-meta{color:var(--muted);font-size:0.82rem;margin-bottom:0.8rem;letter-spacing:0.5px;}
+  .tl-bullets{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+  .tl-bullets li{color:var(--muted);font-size:0.93rem;padding-left:1.2rem;position:relative;}
+  .tl-bullets li::before{content:'▹';position:absolute;left:0;color:var(--gold);}
+
+  /* ACHIEVEMENTS */
+  #achievements{background:var(--navy2);}
+  .ach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;}
+  .ach-card{background:var(--navy);border:1px solid rgba(201,168,76,0.15);border-radius:8px;padding:1.5rem;transition:transform 0.3s,border-color 0.3s;}
+  .ach-card:hover{transform:translateY(-4px);border-color:var(--gold);}
+  .ach-icon{font-size:1.8rem;margin-bottom:0.8rem;}
+  .ach-title{color:var(--white);font-weight:700;font-size:0.95rem;margin-bottom:0.4rem;}
+  .ach-desc{color:var(--muted);font-size:0.85rem;line-height:1.6;}
+
+  /* SKILLS */
+  .skills-grid{display:flex;flex-wrap:wrap;gap:0.75rem;}
+  .skill-pill{padding:0.45rem 1rem;border:1px solid rgba(201,168,76,0.3);border-radius:20px;font-size:0.82rem;color:var(--gold2);background:rgba(201,168,76,0.05);transition:all 0.3s;}
+  .skill-pill:hover{background:rgba(201,168,76,0.12);border-color:var(--gold);}
+
+  /* PUBLICATION */
+  #publication{background:var(--navy2);}
+  .pub-card{background:var(--navy);border-left:3px solid var(--gold);border-radius:6px;padding:1.5rem 2rem;}
+  .pub-title{color:var(--white);font-weight:700;font-size:1rem;margin-bottom:0.3rem;}
+  .pub-date{color:var(--gold);font-size:0.8rem;margin-bottom:0.5rem;}
+  .pub-desc{color:var(--muted);font-size:0.9rem;}
+
+  /* INTERESTS */
+  .interests-row{display:flex;gap:2rem;flex-wrap:wrap;}
+  .interest-item{display:flex;align-items:center;gap:0.6rem;color:var(--muted);font-size:0.95rem;}
+  .interest-item span{font-size:1.5rem;}
+
+  /* CONTACT */
+  #contact{background:var(--navy2);text-align:center;}
+  .contact-links{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-top:2rem;}
+  .contact-chip{display:flex;align-items:center;gap:0.5rem;padding:0.7rem 1.4rem;border:1px solid rgba(201,168,76,0.3);border-radius:6px;text-decoration:none;color:var(--gold2);font-size:0.88rem;transition:all 0.3s;}
+  .contact-chip:hover{background:rgba(201,168,76,0.1);border-color:var(--gold);}
+
+  /* FOOTER */
+  footer{text-align:center;padding:2rem;color:var(--muted);font-size:0.8rem;border-top:1px solid rgba(201,168,76,0.1);}
+
+  /* ANIMATIONS */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(-8px);}}
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s,transform 0.7s;}
+  .revealed{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">BPS</div>
+  <ul class="nav-links">
+    <li><a href="#summary">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#achievements">Awards</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Senior Product Manager</div>
+    <h1 class="hero-name">Bhanu Pratap <span>Seth</span></h1>
+    <p class="hero-title">Payments · Healthcare · Digital Transformation</p>
+    <p class="hero-desc">12+ years crafting digital products at scale — from Visa's global issuing solutions to Mastercard's design system — serving tens of millions of users worldwide.</p>
+    <div class="hero-links">
+      <a href="#experience" class="btn btn-gold">View Experience</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="scroll-hint">↓ scroll</div>
+</section>
+
+<!-- SUMMARY -->
+<section id="summary">
+  <div class="container reveal">
+    <div class="section-label">About Me</div>
+    <h2 class="section-title">Product Leader & Innovator</h2>
+    <div class="section-line"></div>
+    <p class="summary-text">
+      Accomplished product manager with <strong>12+ years of experience</strong> driving development and delivery of digital products across <strong>Payments, Healthcare, and Digital Transformation</strong> in both B2B and B2C sectors. Proven track record working with industry leaders <strong>Visa</strong> and <strong>Mastercard</strong>, leading cross-functional teams from ideation to launch as both an individual contributor and people manager. Expert in <strong>product strategy</strong>, scalable solution development, and full lifecycle management.
+    </p>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container reveal">
+    <div class="section-label">Career</div>
+    <h2 class="section-title">Experience</h2>
+    <div class="section-line"></div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-company">Visa</div>
+        <div class="tl-role">Senior Manager, Product Management</div>
+        <div class="tl-meta">Mar 2022 – Present &nbsp;·&nbsp; Bengaluru, India</div>
+        <ul class="tl-bullets">
+          <li>Spearheaded Digital Issuing Solutions serving issuers globally via Mobile & Web SDKs reaching <strong style="color:var(--gold2)">20M+ users</strong>.</li>
+          <li>Delivered Visa Digital Enablement Lite App (Apple App Clips & Google Instant Apps) adopted by 10+ issuers, generating <strong style="color:var(--gold2)">$3M+ annual revenue</strong>.</li>
+          <li>Managed and mentored a team of 4 product managers across key SDK products — Subscription Manager, Visa Purchase Alerts App.</li>
+          <li>Led commercialization, go-to-market strategy, and global rollout for Visa Digital Enablement SDKs.</li>
+          <li>Piloting instrumentation & experimentation platforms using Optimizely and Statsig.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-company">Mastercard</div>
+        <div class="tl-role">Senior Product Management – Technical</div>
+        <div class="tl-meta">Jul 2019 – Mar 2022 &nbsp;·&nbsp; Pune, India</div>
+        <ul class="tl-bullets">
+          <li>Led Digital Experience Platform (DXP) with <strong style="color:var(--gold2)">200+ reusable components</strong>, driving <strong style="color:var(--gold2)">$4.4M in cost savings</strong>.</li>
+          <li>Developed Mastercard Sonic SDK for sensory branding across mobile, web, and POS platforms.</li>
+          <li>Launched DXP Portal with self-service capabilities, reducing agency onboarding time by <strong style="color:var(--gold2)">95%</strong>.</li>
+          <li>Built DXP Studio drag-and-drop app builder, projected to save <strong style="color:var(--gold2)">$5M annually</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-company">Meditab Softwares</div>
+        <div class="tl-role">Business Analyst</div>
+        <div class="tl-meta">Dec 2013 – Jun 2019 &nbsp;·&nbsp; Ahmedabad, India</div>
+        <ul class="tl-bullets">
+          <li>Launched 10+ new products for value-added services, driving pricing strategy and vendor onboarding.</li>
+          <li>Led ONC-HIT 2015 certification and CMS compliance engagements.</li>
+          <li>Achieved <strong style="color:var(--gold2)">$750K in total product sales</strong> and $50K in annual subscription revenue growth.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-company">Vodafone</div>
+        <div class="tl-role">Assistant Technology</div>
+        <div class="tl-meta">Feb 2013 – Dec 2013 &nbsp;·&nbsp; Ahmedabad, India</div>
+        <ul class="tl-bullets">
+          <li>Managed database backups with Data Pump and RMAN; developed complex SQL queries and stored procedures.</li>
+          <li>Earned <strong style="color:var(--gold2)">Employee of the Month</strong> for three consecutive months in 2013.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="container reveal">
+    <div class="section-label">Recognition</div>
+    <h2 class="section-title">Key Achievements</h2>
+    <div class="section-line"></div>
+    <div class="ach-grid">
+      <div class="ach-card">
+        <div class="ach-icon">🏆</div>
+        <div class="ach-title">Visa VHack Hackathon 2023 — Runner-up</div>
+        <div class="ach-desc">Built a Visa-powered checkout experience for Apple Vision Pro, selected from over 1,000 competing products.</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-icon">🥈</div>
+        <div class="ach-title">Visa TechCon 2022 — Runner-up</div>
+        <div class="ach-desc">Built Subscription Manager, a fintech product streamlining recurring payments and user control.</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-icon">🎯</div>
+        <div class="ach-title">Visa Product Showcase 2022 — Finalist</div>
+        <div class="ach-desc">Recognized for Family Card Sharing Service, enabling secure and flexible card access for households.</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-icon">🌐</div>
+        <div class="ach-title">Best Financial Website Award</div>
+        <div class="ach-desc">Won Best Financial Service Website award for Mastercard.US, built using DXP.</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-icon">🤖</div>
+        <div class="ach-title">Product Prototyping using GenAI</div>
+        <div class="ach-desc">Helped product teams build interactive prototypes using Visa's internal Vibe coding platform.</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-icon">📄</div>
+        <div class="ach-title">Defensive Publication — Visa OBO Authentication</div>
+        <div class="ach-desc">Patent for On-Behalf-of Authentication, an accessibility-focused innovation for visually impaired users (Jun 2023).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container reveal">
+    <div class="section-label">Expertise</div>
+    <h2 class="section-title">Skills</h2>
+    <div class="section-line"></div>
+    <div class="skills-grid">
+      <span class="skill-pill">Product Management</span>
+      <span class="skill-pill">Product Strategy</span>
+      <span class="skill-pill">UX Research & Design</span>
+      <span class="skill-pill">Market & Competitor Analysis</span>
+      <span class="skill-pill">Product Development</span>
+      <span class="skill-pill">Agile</span>
+      <span class="skill-pill">Google Analytics</span>
+      <span class="skill-pill">Data Analysis</span>
+      <span class="skill-pill">Prompt Prototyping</span>
+      <span class="skill-pill">Client Service</span>
+      <span class="skill-pill">People Management</span>
+      <span class="skill-pill">JIRA</span>
+      <span class="skill-pill">Confluence</span>
+      <span class="skill-pill">Localization</span>
+      <span class="skill-pill">Optimizely</span>
+      <span class="skill-pill">Statsig</span>
+      <span class="skill-pill">Payments</span>
+      <span class="skill-pill">GDPR / PCI Compliance</span>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATION -->
+<section id="publication">
+  <div class="container reveal">
+    <div class="section-label">Publications</div>
+    <h2 class="section-title">Intellectual Property</h2>
+    <div class="section-line"></div>
+    <div class="pub-card">
+      <div class="pub-title">Visa OBO Authentication</div>
+      <div class="pub-date">Defensive Publication · June 2023</div>
+      <div class="pub-desc">Received defensive publication for patent of Visa On-Behalf-of Authentication — an accessibility-focused innovation designed to empower visually impaired users for their authentication needs.</div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERESTS -->
+<section id="interests">
+  <div class="container reveal">
+    <div class="section-label">Beyond Work</div>
+    <h2 class="section-title">Interests</h2>
+    <div class="section-line"></div>
+    <div class="interests-row">
+      <div class="interest-item"><span>🎒</span> Backpacking</div>
+      <div class="interest-item"><span>🍳</span> Cooking</div>
+      <div class="interest-item"><span>📷</span> Aerial Shooting</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container reveal">
+    <div class="section-label">Let's Connect</div>
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="section-line" style="margin:0 auto 1rem;"></div>
+    <p style="color:var(--muted);max-width:480px;margin:0 auto;">Open to exciting product leadership opportunities, collaborations, and conversations.</p>
+    <div class="contact-links">
+      <a href="mailto:bhanupratap.seth@gmail.com" class="contact-chip">📧 bhanupratap.seth@gmail.com</a>
+      <a href="tel:+919726250805" class="contact-chip">📞 +91-9726250805</a>
+      <a href="https://www.linkedin.com/in/bhanupratapseth/" target="_blank" class="contact-chip">💼 LinkedIn</a>
+      <a href="#" class="contact-chip">📍 Bengaluru, India</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Designed & built for Bhanu Pratap Seth &nbsp;·&nbsp; © 2026</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('revealed'); });
+  }, {threshold: 0.12});
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
